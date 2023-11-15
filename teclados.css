@@ -1,0 +1,399 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --negro:#151517;
+    --blanco:#fff;
+    --verde:#18c66a;
+    --negro2:black;
+    --letra:rgba(255, 0, 0, 0.751);
+    --h-blanco: rgba(255, 255, 255, 0.178);
+    --focus:rgba(255, 255, 255, 0.178);
+    --color-neutral-0:#0c0c0c;
+    --color-neutral-10:#171717;
+    --color-neutral-30:#a8a29e;
+    --color-neutral-40:#f5f5f5;
+    --facebook:#4267b4;
+    --orange:orange;
+}
+
+html{
+    font-size: 62.5% ;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.2)) ,url(fomdo.jpg); 
+    background-position: center ;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
+/*barra de navegacion*/
+
+
+.container{
+    margin: auto;
+    width: 90%;
+    overflow: hidden;
+}
+
+.hero{
+   color: var(--blanco);
+   background-color: var(--negro);
+   height: 8rem;
+}
+
+.nav{
+    --state-close:scale(0);
+    --state-hamburguer:scale(1);
+    --state-menu:translate(-1000%);
+
+
+    padding: 40px 0 ;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: repeat(2,max-content);
+}
+
+.nav:target{
+    --state-menu:translate(0);
+    --state-close:scale(1);
+    --state-hamburguer:scale(0);
+}
+
+
+
+.nav__logo{
+    font-size: 2.5rem;
+}
+
+.nav__hamburguer,
+.nav__close{  /*selector multiple*/
+    cursor: pointer;
+    grid-column: -2/-1;
+    grid-row: 1/2;
+    transition: .4s transform;
+    height: 0.1rem;
+}
+
+.nav__hamburguer{
+    transform: var(--state-hamburguer);
+}
+
+.nav__close{
+    transform: var(--state-close);
+}
+
+
+.nav__logo{
+    width: 6rem;
+    height: 6rem;
+    position: absolute;
+}
+
+.nav__links{
+    background-color: var(--negro);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+
+    display: grid;
+    align-content: center;
+    gap: 2em;
+    padding-left: 5%;
+
+    transform: var(--state-menu);
+    transition: .3s transform;
+}
+
+
+.nav__item{
+    list-style: none;
+}
+
+.nav__links a:hover{ /*selector desendiente*/
+    color: var(--verde);
+}
+
+.nav__links a:focus{
+    background-color: var(--orange);
+}
+
+.nav__link{
+    color:var(--blanco) ;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.nav__hamburguer{
+    height: 30px;
+}
+
+.nav__icon{
+    width: 2rem;
+    height: 2rem;
+}
+
+@media(min-width:768px){
+    .nav{
+        --state-hamburguer:scale(0);
+        --state-menu:translate(0);
+    }
+    
+    .nav:target{
+        --state-close:scale(0);
+    }
+    
+    .nav__links{
+        padding: 0;
+
+        background-color: unset;
+        position: unset;
+        gap: 1.5em;
+        grid-auto-flow: column;
+ 
+    
+        transform:unset;
+        grid-column: -2/-1;
+        grid-row: 1/2;
+    }
+
+}
+
+
+
+.video{
+    width: 100%;
+    height: 100%;
+    border-bottom: 0.5rem solid var(--verde);
+    border-top: 0.5rem solid var(--verde);
+}
+
+
+
+
+
+/*cards  con informacion*/
+
+.container-2{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 1.5rem;
+    margin: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.card{
+    background-color: var(--negro);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30rem;
+    height: 35rem;
+}
+
+.card img{
+    width: 25rem;
+    height: 25rem;
+}
+
+.card > p{ /*selector hijo*/
+    color: var(--verde);
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+.card h2{
+    color:var(--blanco);
+    font-size: 2rem;
+}
+
+.card  span{
+    margin-left: 6rem;
+    color: var(--verde);
+}
+
+.card:hover{
+    cursor: pointer;
+    background: var(--h-blanco);
+}
+
+@media(max-width:768px){
+    .container-2{
+        grid-template-columns: auto auto;
+    }
+
+    .card{
+        width: 15rem;
+        height: 17rem;
+    }
+
+    .card img{
+        width: 9rem;
+        height: 20rem;
+    }
+
+    .card h2{
+        font-size: 0.9rem;
+    }
+
+    .card p{
+        font-size: 1rem;
+    }
+
+}
+
+/*footer de la pagina */
+
+footer{
+    width: 100%;
+    color: var(--color-neutral-40);
+    font-size: 1.5rem;
+}
+
+.footer-link{
+    text-decoration: none;
+}
+
+#footer_content{
+    background-color: var(--color-neutral-10);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding: 3rem 3.5rem;
+}
+
+#footer_contacts h1{
+    margin-bottom: 0.75rem;
+}
+
+#footer_social_media{
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+#footer_social_media .footer-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--color-neutral-40);
+    border-radius: 50%;
+    transition: all 0.4s;
+}
+
+#_
+
+#footer_social_media .footer-link:hover{
+    opacity: 0.8;
+}
+
+#instagram{
+    background: linear-gradient(#7f37c9,#ff2992,#ff9807);
+}
+
+#facebook{
+    background-color: var(--facebook);
+}
+
+#whatsapp{
+    background: var(--verde);
+}
+
+.footer-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.footer-list .footer-link{
+    color:var(--color-neutral-30);
+    transition: all 0.4s;
+}
+
+#footer_social_media .footer-link{
+    color:var(--morado);
+}
+
+#footer_subscribe{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+#footer_subscribe p{
+    color: var(--color-neutral-30);
+}
+
+#input_group{
+    display: flex;
+    align-items: center;
+    background-color: var(--color-neutral-0);
+    border-radius: 4px;
+}
+
+#input_group input{
+    all: unset;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+#input_group{
+    background-color: var(--orange);
+    border: none;
+    color: var(--color-neutral-40);
+    padding: 0px 1.25rem;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+
+#input_group button:hover{
+    opacity: 0.8;
+}
+
+.footer-list li > span{ /*selector hijo*/
+    color: var(--verde);
+}
+
+#footer_copyright{
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-neutral-0);
+    padding: 1.5rem;
+    font-weight: 100;
+}
+
+@media screen and (max-width:768px){
+    #footer_content{
+        grid-template-columns: repeat(2,1fr);
+        gap:2rem;
+    }
+
+}
+
+@media screen and (max-width:426px){
+    #footer_content{
+        grid-template-columns: repeat(1,1fr);
+        gap:2rem;
+    }
+
+}
